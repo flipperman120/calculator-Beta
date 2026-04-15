@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lock Panel</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+
+        .lock-panel {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .lock-icon { text-align: center; font-size: 48px; margin-bottom: 20px; }
+
+        .lock-panel h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+
+        #status-badge {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .badge-locked   { background: #fde8e8; color: #c0392b; }
+        .badge-unlocked { background: #e8fde8; color: #27ae60; }
+
+        .form-group { margin-bottom: 20px; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus { outline: none; border-color: #667eea; }
+
+        .lock-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-bottom: 10px;
+        }
+
+        .lock-btn:hover  { transform: translateY(-2px); }
+        .lock-btn:active { transform: translateY(0); }
+
+        .unlock-btn {
+            width: 100%;
+            padding: 10px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .unlock-btn:hover { transform: translateY(-2px); }
+
+        #message {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            min-height: 18px;
+        }
+
+        .msg-error   { color: #c0392b; }
+        .msg-success { color: #27ae60; }
+    </style>
+</head>
+<body>
+    <div class="lock-panel">
+        <div class="lock-icon" id="lock-icon">🔒</div>
+        <h2 id="panel-title">Calculator Lock Panel</h2>
+        <div id="status-badge" class="badge-locked">● Hub is currently LOCKED</div>
+
+        <div class="form-group">
+            <label for="password">Enter Admin Code:</label>
+            <input type="password" id="password" placeholder="Enter code" autocomplete="off">
+        </div>
+
+        <button class="lock-btn" onclick="handleLock()">Lock Hub</button>
+        <button class="unlock-btn" onclick="handleUnlock()">Unlock Hub</button>
+
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const LOCK_CODE   = '3421';
+        const statusBadge = document.getElementById('status-badge');
+        const lockIcon    = document.getElementById('lock-icon');
+        const msgEl       = document.getElementById('message');
+
+        function updateStatus() {
+            const locked = localStorage.getItem('calculatorLocked') === 'true';
+            if (locked) {
+                statusBadge.textContent = '● Hub is currently LOCKED';
+                statusBadge.className   = 'badge-locked';
+                lockIcon.textContent    = '🔒';
+            } else {
+                statusBadge.textContent = '● Hub is currently UNLOCKED';
+                statusBadge.className   = 'badge-unlocked';
+                lockIcon.textContent    = '🔓';
+            }
+        }
+
+        function showMsg(text, type) {
+            msgEl.textContent = text;
+            msgEl.className   = type === 'error' ? 'msg-error' : 'msg-success';
+            setTimeout(() => { msgEl.textContent = ''; }, 3000);
+        }
+
+        function handleLock() {
+            const pw = document.getElementById('password').value;
+            if (pw === LOCK_CODE) {
+                localStorage.setItem('calculatorLocked', 'true');
+                updateStatus();
+                showMsg('Hub locked successfully.', 'success');
+            } else {
+                showMsg('Incorrect code.', 'error');
+            }
+            document.getElementById('password').value = '';
+        }
+
+        function handleUnlock() {
+            const pw = document.getElementById('password').value;
+            if (pw === LOCK_CODE) {
+                localStorage.setItem('calculatorLocked', 'false');
+                updateStatus();
+                showMsg('Hub unlocked successfully.', 'success');
+            } else {
+                showMsg('Incorrect code.', 'error');
+            }
+            document.getElementById('password').value = '';
+        }
+
+        // Set initial status on load
+        updateStatus();
+    </script>
+</body>
+</html>
