@@ -21,5 +21,6 @@
   { "name": "Retro Bowl", "url": "https://retrobowl.me/", "cat": "Action" },
   { "name": "Nick games", "url": "https://www.nick.com/games/all-games", "cat": "Action" },
   { "name": "addictinggames", "url": "https://www.addictinggames.com/", "cat": "Action" },
-  { "name": "bug report", "url": "https://forms.gle/EUNFhMXFb2wSbECR8/", "cat": "Form" }
+  { "name": "bug report", "url": "https://forms.gle/EUNFhMXFb2wSbECR8/", "cat": "Form" },
+    { "name": "bug report", "url": "https://music.amazon.com/", "cat": "music" }
 ]
