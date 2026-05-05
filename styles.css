@@ -1,0 +1,254 @@
+/* ===========================
+   Calculator Styling
+   =========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.calculator-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calculator-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.display {
+  background: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: right;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.3s ease;
+}
+
+.display:focus-within {
+  border-color: #667eea;
+  background: #f9f9ff;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.1);
+}
+
+.previous-operand {
+  color: #999;
+  font-size: 18px;
+  min-height: 24px;
+  margin-bottom: 10px;
+}
+
+.current-operand {
+  color: #333;
+  font-size: 32px;
+  font-weight: 600;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Number buttons */
+.btn-number {
+  background: #f0f0f0;
+  color: #333;
+  border: 2px solid #e0e0e0;
+}
+
+.btn-number:hover {
+  background: #e8e8e8;
+  border-color: #d0d0d0;
+}
+
+/* Operator buttons */
+.btn-operator {
+  background: #667eea;
+  color: white;
+  font-size: 20px;
+}
+
+.btn-operator:hover {
+  background: #5568d3;
+}
+
+/* Clear button */
+.btn-clear {
+  background: #ff6b6b;
+  color: white;
+  grid-column: span 2;
+}
+
+.btn-clear:hover {
+  background: #ff5252;
+}
+
+/* Delete button */
+.btn-delete {
+  background: #ffa940;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #ff922b;
+}
+
+/* Decimal button */
+.btn-decimal {
+  background: #f0f0f0;
+  color: #333;
+  border: 2px solid #e0e0e0;
+}
+
+.btn-decimal:hover {
+  background: #e8e8e8;
+  border-color: #d0d0d0;
+}
+
+/* Equals button */
+.btn-equals {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  grid-column: span 2;
+  font-size: 20px;
+}
+
+.btn-equals:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #68408a 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .calculator-container {
+    padding: 20px;
+  }
+
+  .calculator-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .current-operand {
+    font-size: 28px;
+  }
+
+  .previous-operand {
+    font-size: 16px;
+  }
+
+  button {
+    padding: 18px;
+    font-size: 16px;
+  }
+
+  .buttons-grid {
+    gap: 10px;
+  }
+}
+
+/* Dark Mode (Optional) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  }
+
+  .calculator-container {
+    background: #0f3460;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .calculator-title {
+    color: #e0e0e0;
+  }
+
+  .display {
+    background: #1a1a2e;
+    border-color: #333;
+  }
+
+  .display:focus-within {
+    border-color: #667eea;
+    background: #1a1a3e;
+  }
+
+  .current-operand {
+    color: #e0e0e0;
+  }
+
+  .previous-operand {
+    color: #888;
+  }
+
+  .btn-number {
+    background: #16213e;
+    color: #e0e0e0;
+    border-color: #333;
+  }
+
+  .btn-number:hover {
+    background: #1a2a4e;
+    border-color: #444;
+  }
+}
