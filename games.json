@@ -3,8 +3,6 @@
   { "name": "Slope", "url": "https://slopegame.io/", "cat": "Action" },
   { "name": "Stickman Hook", "url": "https://stickmanhook.io/", "cat": "Action" },
   { "name": "Subway Surfers", "url": "https://subwaysurfersgame.io/", "cat": "Action" },
-  { "name": "Temple Run 2", "url": "https://templerun2.io/", "cat": "Action" },
-  { "name": "Tunnel Rush", "url": "https://tunnelrush.io/", "cat": "Action" },
   { "name": "Geometry Dash", "url": "https://geometrydash.io/", "cat": "Action" },
   { "name": "Drift Hunters", "url": "https://drifthunters.io/", "cat": "Racing" },
   { "name": "Moto X3M", "url": "https://motox3m.io/", "cat": "Racing" },
@@ -16,11 +14,9 @@
   { "name": "Paper.io 2", "url": "https://paper-io.com/", "cat": "Shooter" },
   { "name": "2048", "url": "https://2048.io/", "cat": "Puzzle" },
   { "name": "Sudoku", "url": "https://sudoku.com/", "cat": "Puzzle" },
-  { "name": "Chess.com", "url": "https://www.chess.com/play/online", "cat": "Puzzle" },
   { "name": "Basketball Stars", "url": "https://basketballstars.io/", "cat": "Action" },
   { "name": "Retro Bowl", "url": "https://retrobowl.me/", "cat": "Action" },
-  { "name": "Nick games", "url": "https://www.nick.com/games/all-games", "cat": "Action" },
   { "name": "addictinggames", "url": "https://www.addictinggames.com/", "cat": "Action" },
   { "name": "bug report", "url": "https://forms.gle/EUNFhMXFb2wSbECR8/", "cat": "Form" },
-  { "name": "Amazon music", "url": "https://music.amazon.com/", "cat": "music" }
+  { "name": "Summarizer", "url": "https://flipperman120.github.io/ai-text-code-summarizer/", "cat": "Tools" }
 ]
